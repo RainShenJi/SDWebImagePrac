@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F11A50AD1B9DDB8900F66BC0 /* HMAppsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A50AC1B9DDB8900F66BC0 /* HMAppsViewController.m */; };
+		F12D497A1B9F2FBA00D50F59 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = F12D49791B9F2FBA00D50F59 /* placeholder.png */; };
+		F12D49801BA24B8600D50F59 /* HMDownLoadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D497F1BA24B8600D50F59 /* HMDownLoadOperation.m */; };
 		F1AEB1111B9DC3CF00E76A12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AEB1101B9DC3CF00E76A12 /* main.m */; };
 		F1AEB1141B9DC3CF00E76A12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AEB1131B9DC3CF00E76A12 /* AppDelegate.m */; };
 		F1AEB1171B9DC3CF00E76A12 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AEB1161B9DC3CF00E76A12 /* ViewController.m */; };
@@ -14,6 +17,8 @@
 		F1AEB11C1B9DC3CF00E76A12 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1AEB11B1B9DC3CF00E76A12 /* Images.xcassets */; };
 		F1AEB11F1B9DC3CF00E76A12 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1AEB11D1B9DC3CF00E76A12 /* LaunchScreen.xib */; };
 		F1AEB12B1B9DC3CF00E76A12 /* SDWebImagePracTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AEB12A1B9DC3CF00E76A12 /* SDWebImagePracTests.m */; };
+		F1AEB1351B9DC5A000E76A12 /* apps.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1AEB1341B9DC5A000E76A12 /* apps.plist */; };
+		F1AEB13F1B9DCDA300E76A12 /* HMApp.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AEB13E1B9DCDA300E76A12 /* HMApp.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +32,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F11A50AB1B9DDB8900F66BC0 /* HMAppsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAppsViewController.h; sourceTree = "<group>"; };
+		F11A50AC1B9DDB8900F66BC0 /* HMAppsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAppsViewController.m; sourceTree = "<group>"; };
+		F12D49791B9F2FBA00D50F59 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		F12D497E1BA24B8600D50F59 /* HMDownLoadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDownLoadOperation.h; sourceTree = "<group>"; };
+		F12D497F1BA24B8600D50F59 /* HMDownLoadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDownLoadOperation.m; sourceTree = "<group>"; };
 		F1AEB10B1B9DC3CF00E76A12 /* SDWebImagePrac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDWebImagePrac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AEB10F1B9DC3CF00E76A12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1AEB1101B9DC3CF00E76A12 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +50,9 @@
 		F1AEB1241B9DC3CF00E76A12 /* SDWebImagePracTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SDWebImagePracTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AEB1291B9DC3CF00E76A12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1AEB12A1B9DC3CF00E76A12 /* SDWebImagePracTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDWebImagePracTests.m; sourceTree = "<group>"; };
+		F1AEB1341B9DC5A000E76A12 /* apps.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = apps.plist; sourceTree = "<group>"; };
+		F1AEB13D1B9DCDA300E76A12 /* HMApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMApp.h; sourceTree = "<group>"; };
+		F1AEB13E1B9DCDA300E76A12 /* HMApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMApp.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +73,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F12D49781B9F2FB400D50F59 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				F12D49791B9F2FBA00D50F59 /* placeholder.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		F1AEB1021B9DC3CF00E76A12 = {
 			isa = PBXGroup;
 			children = (
+				F12D49781B9F2FB400D50F59 /* Image */,
+				F1AEB13C1B9DCD7D00E76A12 /* Model */,
 				F1AEB10D1B9DC3CF00E76A12 /* SDWebImagePrac */,
 				F1AEB1271B9DC3CF00E76A12 /* SDWebImagePracTests */,
 				F1AEB10C1B9DC3CF00E76A12 /* Products */,
@@ -83,8 +106,13 @@
 			children = (
 				F1AEB1121B9DC3CF00E76A12 /* AppDelegate.h */,
 				F1AEB1131B9DC3CF00E76A12 /* AppDelegate.m */,
+				F1AEB1341B9DC5A000E76A12 /* apps.plist */,
 				F1AEB1151B9DC3CF00E76A12 /* ViewController.h */,
 				F1AEB1161B9DC3CF00E76A12 /* ViewController.m */,
+				F11A50AB1B9DDB8900F66BC0 /* HMAppsViewController.h */,
+				F11A50AC1B9DDB8900F66BC0 /* HMAppsViewController.m */,
+				F12D497E1BA24B8600D50F59 /* HMDownLoadOperation.h */,
+				F12D497F1BA24B8600D50F59 /* HMDownLoadOperation.m */,
 				F1AEB1181B9DC3CF00E76A12 /* Main.storyboard */,
 				F1AEB11B1B9DC3CF00E76A12 /* Images.xcassets */,
 				F1AEB11D1B9DC3CF00E76A12 /* LaunchScreen.xib */,
@@ -117,6 +145,15 @@
 				F1AEB1291B9DC3CF00E76A12 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F1AEB13C1B9DCD7D00E76A12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F1AEB13D1B9DCDA300E76A12 /* HMApp.h */,
+				F1AEB13E1B9DCDA300E76A12 /* HMApp.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +205,7 @@
 				TargetAttributes = {
 					F1AEB10A1B9DC3CF00E76A12 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = B3H55UWC9Q;
 					};
 					F1AEB1231B9DC3CF00E76A12 = {
 						CreatedOnToolsVersion = 6.4;
@@ -199,8 +237,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1AEB1351B9DC5A000E76A12 /* apps.plist in Resources */,
 				F1AEB11A1B9DC3CF00E76A12 /* Main.storyboard in Resources */,
 				F1AEB11F1B9DC3CF00E76A12 /* LaunchScreen.xib in Resources */,
+				F12D497A1B9F2FBA00D50F59 /* placeholder.png in Resources */,
 				F1AEB11C1B9DC3CF00E76A12 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,9 +259,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1AEB13F1B9DCDA300E76A12 /* HMApp.m in Sources */,
 				F1AEB1171B9DC3CF00E76A12 /* ViewController.m in Sources */,
+				F12D49801BA24B8600D50F59 /* HMDownLoadOperation.m in Sources */,
 				F1AEB1141B9DC3CF00E76A12 /* AppDelegate.m in Sources */,
 				F1AEB1111B9DC3CF00E76A12 /* main.m in Sources */,
+				F11A50AD1B9DDB8900F66BC0 /* HMAppsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +392,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SDWebImagePrac/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -359,7 +404,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SDWebImagePrac/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -418,6 +465,7 @@
 				F1AEB1301B9DC3CF00E76A12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F1AEB1311B9DC3CF00E76A12 /* Build configuration list for PBXNativeTarget "SDWebImagePracTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +474,7 @@
 				F1AEB1331B9DC3CF00E76A12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
