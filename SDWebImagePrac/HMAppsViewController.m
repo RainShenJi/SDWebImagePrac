@@ -145,7 +145,7 @@
     
     //创建操作
     //__weak HMAppsViewController * appvc = self; //第一种写法
-   // __weak typeof(self) appvc = self; //第二种写法
+    __weak typeof(self) appvc = self; //第二种写法
     /*
      typeof 判断类型，self就是HMAppsViewController * 这个类型,举个例子：
      int age = 20;
@@ -227,68 +227,122 @@
     blockOperation = [[HMDownLoadOperation alloc] init];
     blockOperation.imageUrl = urlString; //在这里知道自己下载什么了，不迷茫了，下载完就告诉他的代理
     //设置代理
-    blockOperation.delegate = self;
+  //  blockOperation.delegate = self;
     blockOperation.indexpath = indexPath;
     [self.queue addOperation:blockOperation]; //一旦这里添加操作就调用operation的main方法，所以在HMDownLoadOperation里面实现main方法，在其里面写要做的事情
-
-    //添加到字典中，解决重复下载
+        //添加到字典中，解决重复下载
+//    blockOperation.block = ^(UIImage * image){
+// 
+//    };
+    [blockOperation downLoadBlock:^(UIImage *image) {
+       
+        if (image) {
+            
+            appvc.images[urlString] = image; //加if语句防止image为nil，由于字典不能放nil，否则会崩溃的,另外这里会产生循环引用,那怎么办呢？将其中一个置为弱引用,两个办法
+            
+            
+            
+            //往沙盒存图片
+            
+            //UIImage -> UIData -> file
+            
+            NSData * data = UIImageJPEGRepresentation(image, 1.0);
+            
+            
+            
+            //获得caches的路径
+            
+            NSString * caches = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+            
+            NSLog(@"caches : %@", caches);
+            
+            //拼接路径
+            
+            NSString * fileName = [urlString lastPathComponent];
+            
+            NSString * file = [caches stringByAppendingPathComponent:fileName];
+            
+            NSLog(@"file : %@",file);
+            
+            [data writeToFile:file atomically:YES];
+            
+            
+            
+        }
+        
+        
+        
+        //下载完成后移除下载操作以免字典越来越大,也可以防止下载失败，if语句不进来，但是删除后，也不对，因为删除后if语句也会一直走，这时怎么办呢？
+        
+        [appvc.operations removeObjectForKey:urlString];
+        
+        
+        
+        //刷新表格,就会重新调用当前表格
+        
+        //  [self.tableView reloadData];
+        
+        //但是上面这个会刷新所有表格，影响性能，所以最好刷新对应的表格
+        
+        [appvc.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }];
     self.operations[urlString] = blockOperation;
 }
 
-- (void)downLoadOperation:(HMDownLoadOperation *)operation didFinishDownLoad:(UIImage *)image {
-    
-    //存放图片到字典中
-    
-    if (image) {
-        
-        self.images[operation.imageUrl] = image; //加if语句防止image为nil，由于字典不能放nil，否则会崩溃的,另外这里会产生循环引用,那怎么办呢？将其中一个置为弱引用,两个办法
-        
-        
-        
-        //往沙盒存图片
-        
-        //UIImage -> UIData -> file
-        
-        NSData * data = UIImageJPEGRepresentation(image, 1.0);
-        
-        
-        
-        //获得caches的路径
-        
-        NSString * caches = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-        
-        //  NSLog(@"caches : %@", caches);
-        
-        //拼接路径
-        
-        NSString * fileName = [operation.imageUrl lastPathComponent];
-        
-        NSString * file = [caches stringByAppendingPathComponent:fileName];
-        
-        //  NSLog(@"file : %@",file);
-        
-        [data writeToFile:file atomically:YES];
-        
-        
-        
-    }
-    
-    
-    
-    //下载完成后移除下载操作以免字典越来越大,也可以防止下载失败，if语句不进来，但是删除后，也不对，因为删除后if语句也会一直走，这时怎么办呢？
-    
-    [self.operations removeObjectForKey:operation.imageUrl];
-    
-    
-    
-    //刷新表格,就会重新调用当前表格
-    
-    //  [self.tableView reloadData];
-    
-    //但是上面这个会刷新所有表格，影响性能，所以最好刷新对应的表格
-    
-    [self.tableView reloadRowsAtIndexPaths:@[operation.indexpath] withRowAnimation:UITableViewRowAnimationNone];
-}
+//- (void)downLoadOperation:(HMDownLoadOperation *)operation didFinishDownLoad:(UIImage *)image {
+//    
+//    //存放图片到字典中
+//    
+//    if (image) {
+//        
+//        self.images[operation.imageUrl] = image; //加if语句防止image为nil，由于字典不能放nil，否则会崩溃的,另外这里会产生循环引用,那怎么办呢？将其中一个置为弱引用,两个办法
+//        
+//        
+//        
+//        //往沙盒存图片
+//        
+//        //UIImage -> UIData -> file
+//        
+//        NSData * data = UIImageJPEGRepresentation(image, 1.0);
+//        
+//        
+//        
+//        //获得caches的路径
+//        
+//        NSString * caches = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+//        
+//        //  NSLog(@"caches : %@", caches);
+//        
+//        //拼接路径
+//        
+//        NSString * fileName = [operation.imageUrl lastPathComponent];
+//        
+//        NSString * file = [caches stringByAppendingPathComponent:fileName];
+//        
+//        //  NSLog(@"file : %@",file);
+//        
+//        [data writeToFile:file atomically:YES];
+//        
+//        
+//        
+//    }
+//    
+//    
+//    
+//    //下载完成后移除下载操作以免字典越来越大,也可以防止下载失败，if语句不进来，但是删除后，也不对，因为删除后if语句也会一直走，这时怎么办呢？
+//    
+//    [self.operations removeObjectForKey:operation.imageUrl];
+//    
+//    
+//    
+//    //刷新表格,就会重新调用当前表格
+//    
+//    //  [self.tableView reloadData];
+//    
+//    //但是上面这个会刷新所有表格，影响性能，所以最好刷新对应的表格
+//    
+//    [self.tableView reloadRowsAtIndexPaths:@[operation.indexpath] withRowAnimation:UITableViewRowAnimationNone];
+//}
 
 #pragma mark - system delegate
 

@@ -15,16 +15,17 @@
  */
 - (void)main {
 
-    @autoreleasepool {
+//    @autoreleasepool {
         
-        if (self.isCancelled) return; //这里检查一开始是否被取消干掉了
+ //       if (self.isCancelled) return; //这里检查一开始是否被取消干掉了
         
         NSURL * url = [NSURL URLWithString:self.imageUrl];
         
         NSData * data = [NSData dataWithContentsOfURL:url]; //做下载
         
         UIImage * image = [UIImage imageWithData:data]; //NSData -> UIImage
-        if (self.cancelled) return; //这里就是操作既然被取消了，被干掉了，就不要往下执行主线程通知代理了
+        self.image = image;
+//        if (self.cancelled) return; //这里就是操作既然被取消了，被干掉了，就不要往下执行主线程通知代理了
         
         //上面已经下载完了，那下载完做什么啊，是不是要回到主线程刷新UI啊，复制控制器里面的代码后，发现所有要做的事情都是控制器知道，而当前类只负责下载，下载完要做什么不知道，只是帮别人跑腿的，所以下载完要通知别人，这时应该用代理，回传给控制器一些值，看到下面警告就知道所有要做的事情都是控制器在做了,只要成为了operation代理，就能监听下载过程，下载完会通知控制器
         /* [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -86,14 +87,32 @@
          [appvc.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
          
          }];*/
+//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//            //代理回到主线程做事
+////            if ([self.delegate respondsToSelector:@selector(downLoadOperation:didFinishDownLoad:)]) {
+////                [self.delegate downLoadOperation:self didFinishDownLoad:image];
+////            }
+//            
+//            if (self.block) {
+//                self.block(image);
+//            }
+//            
+//        }];
+ //   }
+
+}
+
+- (void)downLoadBlock:(DownLoadOperationBLock)loadBLock {
+    @autoreleasepool {
+        if (self.cancelled) return;
+        [self main];
+        if (self.cancelled) return;
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            //代理回到主线程做事
-            if ([self.delegate respondsToSelector:@selector(downLoadOperation:didFinishDownLoad:)]) {
-                [self.delegate downLoadOperation:self didFinishDownLoad:image];
-            }
+           
+            loadBLock(self.image);
         }];
     }
-
+    
 }
 
 @end

@@ -21,10 +21,19 @@
 
 @end
 
+//上面用代理实现的，同样也可以用block实现
+typedef void(^DownLoadOperationBLock)(UIImage * image);
+
 @interface HMDownLoadOperation : NSOperation
 
 @property (nonatomic, copy) NSString * imageUrl; //作为下载操作要知道自己下什么东西啊,当前类负责下载图片，由外界传进来
 @property (nonatomic, strong) NSIndexPath * indexpath;
 
 @property (nonatomic, weak) id<HMDownLoadOperationDelegate>delegate;
+
+@property (nonatomic, strong) DownLoadOperationBLock block;
+
+@property (nonatomic, strong) UIImage * image;
+- (void)downLoadBlock:(DownLoadOperationBLock)loadBLock;
+
 @end
